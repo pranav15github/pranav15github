@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Motor RPM Control</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="controls-left">
+            <div class="slider-container">
+                <label for="rpm-limit">RPM Limit (%): <span id="limit-value">50</span></label>
+                <input type="range" id="rpm-limit" min="0" max="100" value="50">
+            </div>
+            <div class="display-panel">
+                <p>Motor Output: <span id="current-rpm">0</span> RPM</p>
+                <p>Direction: <span id="current-angle">0</span>&deg;</p>
+            </div>
+            <button id="halt-btn">HALT</button>
+        </div>
+
+        <div class="controls-right">
+            <div id="joystick-container">
+                <div id="joystick-inner"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="logic.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

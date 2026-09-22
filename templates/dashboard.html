@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freight Forecasting Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Freight Forecasting Model</h1>
+            <p>Predictive chartering strategy for East Coast Indian ports</p>
+        </header>
+
+        <main>
+            <div class="form-section">
+                <h2>Cargo Requirements</h2>
+                <form id="forecast-form">
+                    <div class="form-group">
+                        <label for="origin">Origin Port:</label>
+                        <select id="origin" name="origin" required>
+                            <option value="Australia">Australia</option>
+                            <option value="US">US</option>
+                            <option value="Mozambique">Mozambique</option>
+                            <option value="Indonesia">Indonesia</option>
+                            <option value="Russia">Russia</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="destination">Destination Port (East Coast India):</label>
+                        <select id="destination" name="destination" required>
+                            <option value="Paradip">Paradip</option>
+                            <option value="Vizag">Vizag</option>
+                            <option value="Gangavaram">Gangavaram</option>
+                            <option value="Gopalpur">Gopalpur</option>
+                            <option value="Dhamra">Dhamra</option>
+                            <option value="Sagar-Sandheads">Sagar-Sandheads</option>
+                            <option value="Haldia">Haldia</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cargo_volume">Cargo Volume (MT):</label>
+                        <input type="number" id="cargo_volume" name="cargo_volume" required min="1000">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contract_duration">Contract Duration:</label>
+                        <select id="contract_duration" name="contract_duration" required>
+                            <option value="Short-term (1-3 months)">Short-term (1-3 months)</option>
+                            <option value="Medium-term (3-6 months)">Medium-term (3-6 months)</option>
+                            <option value="Long-term (>6 months)">Long-term (>6 months)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit">Generate Forecast</button>
+                </form>
+            </div>
+
+            <div class="results-section" id="results-section" style="display: none;">
+                <h2>Forecast & Recommendations</h2>
+                <div class="cards-container">
+                    <div class="card">
+                        <h3>Vessel Recommendation</h3>
+                        <p id="res-vessel" class="highlight">-</p>
+                    </div>
+                    <div class="card">
+                        <h3>Optimal Market Entry</h3>
+                        <p id="res-entry">-</p>
+                    </div>
+                    <div class="card">
+                        <h3>Idle Management Strategy</h3>
+                        <p id="res-idle">-</p>
+                    </div>
+                    <div class="card">
+                        <h3>Risk Mitigation Warnings</h3>
+                        <p id="res-risk" class="warning">-</p>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Forecasted Freight Rates (USD/MT)</h3>
+                    <div class="rates-display">
+                        <p>1 Month: <span id="rate-1m">-</span></p>
+                        <p>3 Months: <span id="rate-3m">-</span></p>
+                        <p>6 Months: <span id="rate-6m">-</span></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>
